@@ -35,6 +35,13 @@ for i in range(1,filecount):
        
         # Compute the absolute power by approximating the area under the curve
         delta_power = simps(psd[idx_delta], dx=freq_res)
+
+        # Relative delta power (expressed as a percentage of total power)
+        total_power = simps(psd, dx=freq_res)
+        delta_total_power = total_power
+        delta_rel_power = delta_power / total_power
+        #print('Relative delta power: %.3f' % delta_rel_power)
+
         #===================================================================
         # Define theta lower and upper limits
         low, high = 4, 8
